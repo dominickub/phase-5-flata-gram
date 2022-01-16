@@ -11,3 +11,49 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+#addPhoto{
+  color:white
+}
+.nav-button {
+  margin: 100px;
+  margin-top: 10px;
+  color: rgb(129, 129, 129);
+}
+
+.nav-button:hover {
+  color: white;
+}
+
+#camera {
+  position: relative;
+  float: left;
+}
+
+.MuiBox-root.css-i9gxme{
+  margin-bottom:0
+}
+h3 {
+  font-family: 'Dancing Script', cursive;
+  font-size: 30px;
+  color: white;
+  text-decoration: none;
+}
+
+h3:visited {
+  text-decoration: none;
+}
+
+#title {
+  text-decoration: none
+}
+input[type="file"] {
+  display: none;
+}
+
+.custom-file-upload {
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+
