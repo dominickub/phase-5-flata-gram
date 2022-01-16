@@ -233,7 +233,7 @@ export default function NavBar({setCurrentUser,users, setSearch, search, setUser
             component="div"
             sx={{ display: { xs: 'none', sm: 'block' } }}
           >
-            <NavLink id='title' to='/home'><h3>InstaChat</h3></NavLink>
+            <NavLink id='title' to='/home'><h3>FlataGram</h3></NavLink>
           </Typography>
           <Search/>
             <SearchIconWrapper>
