@@ -149,7 +149,7 @@ export default function NavBar({setCurrentUser,users, setSearch, search, setUser
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
+      <NavLink id='profilelink' to='/profile'><MenuItem onClick={handleMenuClose}>Profile</MenuItem></NavLink>
       <MenuItem onClick={handleMenuClose}>My account</MenuItem>
       <MenuItem onClick={handleMenuClose}><BookmarkBorderIcon />Saved Posts</MenuItem>
       <MenuItem onClick={handleLogout}>Logout</MenuItem>

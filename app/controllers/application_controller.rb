@@ -23,4 +23,8 @@ class ApplicationController < ActionController::API
     @post = Post.find(params[:id])
   end
   
+  def find_picture
+    @post
+    @picture = rail_blob_path(post.picture)
+  end
 end

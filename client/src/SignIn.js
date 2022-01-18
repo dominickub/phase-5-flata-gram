@@ -31,7 +31,7 @@ function Copyright(props) {
 
 const theme = createTheme();
 
-export default function SignIn({currentUser, setCurrentUser}) {
+export default function SignIn({ setCurrentUser}) {
   const navigate = useNavigate();
   const [session, setSession] = useState({ username: "", password: "" });
 

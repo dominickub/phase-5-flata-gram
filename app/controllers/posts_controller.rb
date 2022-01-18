@@ -1,8 +1,11 @@
 class PostsController < ApplicationController
+    skip_before_action :authenticate_user
 
     def create  
-        post = Post.create!(post_params)
-        if post.valid?
+        # byebug
+        post = Post.new(post_params)
+        post.user = User.find(session[:user_id])
+        if post.save
             render json: post, status: :created
         end
     end
@@ -18,24 +21,30 @@ class PostsController < ApplicationController
     end
 
     def show
-        render json: @post
+        post = Post.find(params[:id])
+        render json: post
     end
 
-    def increment_likes
-        @current_user?
-        render json: Post.increment(:total_likes, by = 1)
+    # def increment_likes
+    #     @current_user?
+    #     render json: Post.increment(:total_likes, by = 1)
+    # end
+
+    def index
+        posts = Post.all.order('created_at DESC')
+        render json: posts
     end
 
     private
 
     def post_params
-        Post.permit(:caption, :image, :user_id)
+        params.permit(:caption, :image, :user_id, :picture)
     end
 
     def update_post
         params.permit(:caption)
     end
 
-   
+
 
 end

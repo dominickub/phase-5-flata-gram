@@ -1,21 +1,26 @@
 class LikesController < ApplicationController
 
-    # def create
-    #     @like.user_id = @current_user.id
-    #     @like.increment(:total_likes)
-    # end
+    def create
+        @like.user_id = @current_user.id
+        @like.increment(:total_likes)
+    end
+
+    def index 
+        render json: @like
+    end
 
 
-    # def subtract  
-    #     @likes = Likes.find(post_id: params[:post_id])  
-    #     @likes.decrement(:total_likes)
-    #     @like.save
-    # end
 
-    # private
+    def subtract  
+        @likes = Likes.find(post_id: params[:post_id])  
+        @likes.decrement(:total_likes)
+        @like.save
+    end
 
-    # def find_like
-    #     @like = Likes.find(post_id: params[:post_id])
-    # end
+    private
+
+    def find_like
+        @like = Likes.find(post_id: params[:post_id])
+    end
 
 end
