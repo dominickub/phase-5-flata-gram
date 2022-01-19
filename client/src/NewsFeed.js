@@ -35,7 +35,7 @@ const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 const theme = createTheme();
 
-export default function NewsFeed({posts,currentUser, pictures, handleDeletePost}) {
+export default function NewsFeed({handleUpdatePost, posts,currentUser, pictures, handleDeletePost,users}) {
   const [like, setLike] = useState(false)
  let caption = posts.map((post) =>post.caption)
  let picture = pictures.map((picture)=> console.log(picture.picture))
@@ -95,7 +95,7 @@ export default function NewsFeed({posts,currentUser, pictures, handleDeletePost}
           {/* End hero unit */}
           <Grid container spacing={4}>
             {posts.map((post) => (
-              <NewCard currentUser={currentUser} id={post.id} handleDeletePost={handleDeletePost} key={post.id} post={post} likes={post.total_likes}/>
+              <NewCard handleUpdatePost={handleUpdatePost} currentUser={currentUser} id={post.id} handleDeletePost={handleDeletePost} key={post.id} post={post} likes={post.total_likes}/>
               // <Grid item key={post} xs={12} sm={6} md={4}>
               //   <Card
               //     sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}

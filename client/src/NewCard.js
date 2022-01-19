@@ -19,22 +19,64 @@ import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import {useState} from 'react'
 import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from '@mui/material/IconButton';
+import EditIcon from '@mui/icons-material/Edit';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEdit } from '@fortawesome/free-solid-svg-icons'
 
-function NewCard({post,likes,id,handleDeletePost,currentUser}) {
+function NewCard({post,likes,id,handleDeletePost,currentUser,users,handleUpdatePost}) {
+    const [edit, setEdit] = useState(false)
+    
+    const [caption, setCaption] = useState({
+        caption: ""
+    });
+    console.log(caption)
 
     function handleDeleteClick(e) {
         e.preventDefault()
     
         fetch(`/posts/${post.id}`, {
           method: "DELETE",
+            // body: JSON.stringify({post_id: post.id})
         })
-          .then((r => r.json()))
-          .then(data => handleDeletePost(data));
-    
-          
-        handleDeletePost(id);
+        //   .then((r => r.json()))
+        //   .then(data => handleDeletePost(data));
+     
+        handleDeletePost(post.id);
       }
     
+      const handleUpdateClick= e => {
+        e.preventDefault();
+
+        const formData = new FormData();
+        formData.append('caption', caption)
+
+
+        console.log(caption)
+
+        fetch(`/posts/${id}`,{
+            method: 'PATCH',
+            body: formData
+        })}
+        const handleUpdateCaption = (e) => {
+            setCaption(e.target.value );
+    }
+    function handleEdit() {
+        setEdit(!edit)
+    }
+    const editForm = () => {
+        if (edit === false) {
+            return (
+                null
+            )
+        } else {
+            return (
+                <label>
+                    <input id='edit' onChange={handleUpdateCaption} type="text"></input>
+                    <FontAwesomeIcon onClick={handleUpdateClick} id='editSubmit' icon={faEdit} />
+                </label>
+            )
+        }
+    }
     //   function deleteButton() {
     //     if (post.user_id == currentUser.id)
     //       <IconButton onClick={handleDeleteClick} aria-label="delete" size="large">
@@ -77,12 +119,18 @@ function NewCard({post,likes,id,handleDeletePost,currentUser}) {
                 ) : (
                     <Button onClick={handleLike} size="small">Like</Button>
                 )}
-                <Button size="small">Edit</Button>
+                
+                { (post.user_id == currentUser.id)?
+                    <IconButton onClick={handleEdit} aria-label="delete" size="large" >
+                        <EditIcon />
+                    </IconButton>:""  
+                }
                 { (post.user_id == currentUser.id)?
                     <IconButton onClick={handleDeleteClick} aria-label="delete" size="large">
                         <DeleteIcon />
                     </IconButton>:""  
                 }
+                {editForm()}
             </CardActions>
         </Card>
     )
