@@ -5,7 +5,11 @@ import { faArrowCircleRight } from '@fortawesome/free-solid-svg-icons'
 
 function PostUpload() {
     const [selectedImage, setSelectedImage] = useState(null)
-    const [caption, setCaption] = useState("");
+    const [caption, setCaption] = useState({
+        caption: ""
+    });
+
+    console.log(caption)
     const imageUpload = useRef()
     
     const handleSubmit= e => {
@@ -22,6 +26,9 @@ function PostUpload() {
             body: formData
         })
     }
+    const handleChange = (e) => {
+        setCaption(e.target.value );
+    };
 
     
     // function handleSubmit() {
@@ -65,7 +72,7 @@ function PostUpload() {
                 }}ref={imageUpload}
             />
             <br></br>
-            <label for="fname">Caption</label>  <input type="text" id='caption' /> 
+            <label for="fname">Caption</label>  <input type="text" id='caption'value={caption.caption} name="caption" onChange={handleChange} /> 
             </label>
             <FontAwesomeIcon onClick={handleSubmit} icon={faArrowCircleRight}  />
         </div>
