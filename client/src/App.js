@@ -66,6 +66,10 @@ function App() {
       .then(data=> setComments(data) );
       },[])
       
+      function handleDeletePost(id){
+        const updatedPostsArray = posts.filter((post)=> post.id !== id.id)
+        setPosts(updatedPostsArray)
+      }
 
       
 
@@ -88,7 +92,7 @@ function App() {
           <NavBar setCurrentUser={setCurrentUser} users={filteredUsers} setUsers={setUsers} setSearch={setSearch} search={search} />
 
           <Routes>
-            <Route path="/home" element={<NewsFeed likes ={likes} setLikes={setLikes} pictures={pictures} posts={posts} mappedPosts={mappedPosts}/>}/>
+            <Route path="/home" element={<NewsFeed currentUser={currentUser} handleDeletePost={handleDeletePost} likes ={likes} setLikes={setLikes} pictures={pictures} posts={posts} mappedPosts={mappedPosts}/>}/>
             <Route path='/upload' element={<PostUpload />}/>
             <Route path='search' element={<Search/>}/>
             <Route path='/profile' element={<Profile/>}/>

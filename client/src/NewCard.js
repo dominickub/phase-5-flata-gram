@@ -17,8 +17,30 @@ import Link from '@mui/material/Link';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import {useState} from 'react'
+import DeleteIcon from '@mui/icons-material/Delete';
+import IconButton from '@mui/material/IconButton';
 
-function NewCard({post,likes}) {
+function NewCard({post,likes,id,handleDeletePost,currentUser}) {
+
+    function handleDeleteClick(e) {
+        e.preventDefault()
+    
+        fetch(`/posts/${post.id}`, {
+          method: "DELETE",
+        })
+          .then((r => r.json()))
+          .then(data => handleDeletePost(data));
+    
+          
+        handleDeletePost(id);
+      }
+    
+    //   function deleteButton() {
+    //     if (post.user_id == currentUser.id)
+    //       <IconButton onClick={handleDeleteClick} aria-label="delete" size="large">
+    //         <DeleteIcon />
+    //       </IconButton>
+    //   }
 
    const [like, setLike] = useState(false)
 
@@ -26,7 +48,7 @@ function NewCard({post,likes}) {
         setLike(!like)
         
     }
-        console.log(likes)
+        console.log(post.total_likes)
     
     return (
         <Card key={post.id}
@@ -49,13 +71,18 @@ function NewCard({post,likes}) {
                     {post.caption}
                 </Typography>
             </CardContent>
-            <CardActions>
+            <CardActions>{post.total_likes}
                 {like ? (
-                    <Button onClick={handleLike} size="small"><ThumbUpIcon />{likes}</Button>
+                    <Button onClick={handleLike} size="small"><ThumbUpIcon /></Button>
                 ) : (
                     <Button onClick={handleLike} size="small">Like</Button>
                 )}
                 <Button size="small">Edit</Button>
+                { (post.user_id == currentUser.id)?
+                    <IconButton onClick={handleDeleteClick} aria-label="delete" size="large">
+                        <DeleteIcon />
+                    </IconButton>:""  
+                }
             </CardActions>
         </Card>
     )
