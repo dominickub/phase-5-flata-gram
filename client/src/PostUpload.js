@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFileUpload } from '@fortawesome/free-solid-svg-icons'
 import { faArrowCircleRight } from '@fortawesome/free-solid-svg-icons'
-
+import Link from '@mui/material/Link';
 function PostUpload() {
     const [selectedImage, setSelectedImage] = useState(null)
     const [caption, setCaption] = useState({
@@ -14,6 +14,7 @@ function PostUpload() {
     
     const handleSubmit= e => {
         e.preventDefault();
+        
 
         const formData = new FormData();
         formData.append('caption', caption)
@@ -25,6 +26,8 @@ function PostUpload() {
             method: 'POST',
             body: formData
         })
+        window.location.href="home";
+
     }
     const handleChange = (e) => {
         setCaption(e.target.value );

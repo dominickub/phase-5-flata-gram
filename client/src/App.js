@@ -95,7 +95,7 @@ function App() {
         <header className="App-header">
          
           <NavBar setCurrentUser={setCurrentUser} users={filteredUsers} setUsers={setUsers} setSearch={setSearch} search={search} />
-
+            <SearchContainer users={filteredUsers} search={search}/>
           <Routes>
             <Route path="/home" element={<NewsFeed handleUpdatePost={handleUpdatePost} currentUser={currentUser} handleDeletePost={handleDeletePost} likes ={likes} setLikes={setLikes} pictures={pictures} posts={posts} mappedPosts={mappedPosts}/>}/>
             <Route path='/upload' element={<PostUpload />}/>

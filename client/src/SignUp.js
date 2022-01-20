@@ -13,6 +13,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import {useState} from 'react'
+import {browserHistory} from 'react'
 // import {Redirect} from 'react-router-dom'
 // import { makeStyles } from "@material-ui/core/styles";
 
@@ -32,7 +33,7 @@ function Copyright(props) {
 
 const theme = createTheme();
 
-export default function SignUp() {
+export default function SignUp({ setCurrentUser}) {
 
     // const classes = useStyles();
     const [formData, setFormData] = useState({
@@ -55,8 +56,10 @@ export default function SignUp() {
           .then((res) => res.json())
           .then((formData) => {
             setFormData(formData);
-            // something to append to the UI the obj created
-          });
+            // browserHistory.push("home");
+          })
+          window.location.href='/SignIn'
+
       } else {
         alert("Password has to be the same");
       }
@@ -66,6 +69,7 @@ export default function SignUp() {
         password: "",
         password_confirmation: "",
       });
+      
     }
 
   return (

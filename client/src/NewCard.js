@@ -56,9 +56,13 @@ function NewCard({post,likes,id,handleDeletePost,currentUser,users,handleUpdateP
         fetch(`/posts/${id}`,{
             method: 'PATCH',
             body: formData
-        })}
+        },window.location.reload()
+        )}
+        
         const handleUpdateCaption = (e) => {
             setCaption(e.target.value );
+        
+
     }
     function handleEdit() {
         setEdit(!edit)
