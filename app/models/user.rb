@@ -6,6 +6,7 @@ class User < ApplicationRecord
     has_many :comments
     has_many :messages
     has_many :follows
+    has_many :messages
     
     has_many :posts, through: :saved_posts
 

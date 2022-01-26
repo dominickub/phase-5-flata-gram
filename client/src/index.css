@@ -67,3 +67,34 @@ input[type="file"] {
   text-decoration: none;
   color: black;
 }
+#grid{
+  justify-content:space-evenly
+}
+
+#card {
+  margin-top: 40px ;
+  box-shadow: black;
+  border: 1px solid rgb(194, 186, 186);
+  max-width: 500px ;
+  min-width: 500px;
+  min-height: 500px;
+}
+#caption{
+  margin-right: 1000%;
+}
+#comments{
+  margin-right: 1000%;
+}
+#username{
+  margin-right: 85%;
+
+}
+
+#image-list{
+  overflow: hidden;
+  margin-left: 155px;
+}
+
+#chatroom{
+color: black
+}

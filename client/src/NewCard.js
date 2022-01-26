@@ -23,6 +23,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit } from '@fortawesome/free-solid-svg-icons'
 
+
 function NewCard({post,likes,id,handleDeletePost,currentUser,users,handleUpdatePost}) {
     const [edit, setEdit] = useState(false)
     
@@ -97,26 +98,23 @@ function NewCard({post,likes,id,handleDeletePost,currentUser,users,handleUpdateP
         console.log(post.total_likes)
     
     return (
-        <Card key={post.id}
-            sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
-        >
+        <Card id="card"key={post.id}
+            sx={{ height: '100%', display: 'flex', flexDirection: 'column', position:"center"}}
+            >
+            <typography id="username">
+                {post.user.username}
+            </typography>
             <CardMedia
                 component="img"
                 sx={{
-                    // 16:9
-                    pt: '56.25%',
+                    spacing:"1%",
+                    // pt:56.25%
+                    pt: '1.25%',
                 }}
                 image={post.image_url}
                 alt="random"
             />
-            <CardContent sx={{ flexGrow: 1 }}>
-                <Typography gutterBottom variant="h5" component="h2">
-                    {post.caption}
-                </Typography>
-                <Typography>
-                    {post.caption}
-                </Typography>
-            </CardContent>
+            
             <CardActions>{post.total_likes}
                 {like ? (
                     <Button onClick={handleLike} size="small"><ThumbUpIcon /></Button>
@@ -136,6 +134,14 @@ function NewCard({post,likes,id,handleDeletePost,currentUser,users,handleUpdateP
                 }
                 {editForm()}
             </CardActions>
+            <CardContent sx={{ flexGrow: 1 }}>
+                <Typography gutterBottom variant="h5" component="h2" id="caption">
+                    {post.caption}
+                </Typography>
+                <Typography id="comments">
+                    {post.caption}
+                </Typography>
+            </CardContent>
         </Card>
     )
 }

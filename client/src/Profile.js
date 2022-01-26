@@ -15,6 +15,8 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Link from '@mui/material/Link';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import ImageList from '@mui/material/ImageList';
+import ImageListItem from '@mui/material/ImageListItem';
 
 function Copyright() {
   return (
@@ -33,7 +35,7 @@ const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 const theme = createTheme();
 
-export default function Profile() {
+export default function Profile({posts}) {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -80,40 +82,20 @@ export default function Profile() {
             </Stack>
           </Container>
         </Box>
-        <Container sx={{ py: 8 }} maxWidth="md">
+        <Container sx={{ py: 8 }} maxWidth="md" >
           {/* End hero unit */}
-          <Grid container spacing={4}>
-            {cards.map((card) => (
-              <Grid item key={card} xs={12} sm={6} md={4}>
-                <Card
-                  sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
-                >
-                  <CardMedia
-                    component="img"
-                    sx={{
-                      // 16:9
-                      pt: '56.25%',
-                    }}
-                    image="https://source.unsplash.com/random"
-                    alt="random"
-                  />
-                  <CardContent sx={{ flexGrow: 1 }}>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      Heading
-                    </Typography>
-                    <Typography>
-                      This is a media card. You can use this section to describe the
-                      content.
-                    </Typography>
-                  </CardContent>
-                  <CardActions>
-                    <Button size="small">View</Button>
-                    <Button size="small">Edit</Button>
-                  </CardActions>
-                </Card>
-              </Grid>
-            ))}
-          </Grid>
+          <ImageList sx={{ width: 500, height: 450 }} cols={3} rowHeight={164} id ="image-list" >
+      {posts.map((post) => (
+        <ImageListItem >
+          <img
+            src={`${post.image_url}?w=164&h=164&fit=crop&auto=format`}
+            srcSet={`${post.image_url}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
+            alt={post.id}
+            loading="lazy"
+          />
+        </ImageListItem>
+      ))}
+    </ImageList >
         </Container>
       </main>
       {/* Footer */}

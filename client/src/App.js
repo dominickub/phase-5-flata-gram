@@ -10,6 +10,7 @@ import Search from "./Search"
 import SearchContainer from "./SearchContainer";
 import NewsFeed from "./NewsFeed";
 import Profile from "./Profile"
+import ChatRoom from "./ChatRoom"
 
 
 function App() {
@@ -60,11 +61,11 @@ function App() {
       
     //   },[])
 
-    useEffect(() => {
-      fetch('/comments')
-      .then(res => res.json())
-      .then(data=> setComments(data) );
-      },[])
+    // useEffect(() => {
+    //   fetch('/comments')
+    //   .then(res => res.json())
+    //   .then(data=> setComments(data) );
+    //   },[])
       
       function handleDeletePost(id){
         const updatedPostsArray = posts.filter((post)=> post.id !== id)
@@ -81,7 +82,7 @@ function App() {
   if (!currentUser) {
     return (
       <Routes>
-        <Route path="/" element={<SignIn />} />
+        <Route path="/" element={<SignIn setCurrentUser={setCurrentUser} />} />
         <Route path="/SignIn" element={<SignIn currentUser={currentUser} setCurrentUser={setCurrentUser} />} />
         <Route path='/SignUp' element={<SignUp  />} />
       </Routes>
@@ -93,6 +94,7 @@ function App() {
 
       <div className="App">
         <header className="App-header">
+      {/* {window.location.href="/home"} */}
          
           <NavBar setCurrentUser={setCurrentUser} users={filteredUsers} setUsers={setUsers} setSearch={setSearch} search={search} />
             <SearchContainer users={filteredUsers} search={search}/>
@@ -100,7 +102,9 @@ function App() {
             <Route path="/home" element={<NewsFeed handleUpdatePost={handleUpdatePost} currentUser={currentUser} handleDeletePost={handleDeletePost} likes ={likes} setLikes={setLikes} pictures={pictures} posts={posts} mappedPosts={mappedPosts}/>}/>
             <Route path='/upload' element={<PostUpload />}/>
             <Route path='search' element={<Search/>}/>
-            <Route path='/profile' element={<Profile/>}/>
+            <Route path='/profile' element={<Profile posts={posts} />}/>
+            <Route path='/chatroom' element={<ChatRoom currentUser={currentUser} />}/>
+            {/* <Route path='/messages' element={<MessagesLayout />}/> */}
           {/* <SignUp />
           <SignIn  /> */}
           </Routes>

@@ -93,7 +93,7 @@ export default function NewsFeed({handleUpdatePost, posts,currentUser, pictures,
         </Box>
         <Container sx={{ py: 8 }} maxWidth="md">
           {/* End hero unit */}
-          <Grid container spacing={4}>
+          <Grid id="grid" container spacing={1}>
             {posts.map((post) => (
               <NewCard handleUpdatePost={handleUpdatePost} currentUser={currentUser} id={post.id} handleDeletePost={handleDeletePost} key={post.id} post={post} likes={post.total_likes}/>
               // <Grid item key={post} xs={12} sm={6} md={4}>

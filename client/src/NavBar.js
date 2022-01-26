@@ -56,7 +56,8 @@ import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import AddAPhotoIcon from '@mui/icons-material/AddAPhoto';
 import { NavLink } from "react-router-dom"
 import SearchContainer from './SearchContainer'
-
+import { useState } from 'react';
+import { Button } from '@mui/material';
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
   borderRadius: theme.shape.borderRadius,
@@ -97,10 +98,11 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default function NavBar({setCurrentUser,users, setSearch, search, setUsers}) {
+export default function NavBar({setCurrentUser,users, setSearch, search, setUsers, MessageRight}) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
+  const [chatOpen, setChatOpen] = useState(null)
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
   const navigate = useNavigate();
@@ -257,7 +259,10 @@ export default function NavBar({setCurrentUser,users, setSearch, search, setUser
             
             <IconButton size="large" aria-label="show 4 new mails" color="inherit">
               <Badge badgeContent={4} color="error">
-                <MailIcon />
+              <NavLink to='/chatroom'><MailIcon id= "addPhoto"/> </NavLink>
+              {/* <button type="button"/><MailIcon /></button>  */}
+              {/* <Button type="button" onClick={() => setChatOpen(prev => !prev)}><MailIcon id= "msg"/>{chatOpen ? "Close Chat" : "Open Chat"} </Button> */}
+
               </Badge>
             </IconButton>
             

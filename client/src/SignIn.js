@@ -45,10 +45,16 @@ export default function SignIn({ setCurrentUser}) {
       body: JSON.stringify(session)
     })
       .then(res => res.json())
-      .then(x =>  x.username && setCurrentUser(x),
-      
-      window.location.href="/home"
+      .then(x =>  {
+        if (x.username ){
+
+          setCurrentUser(x)
+           window.location.href="/home"
+          }
+        }
       );
+      // navigate("/home")
+     
 
   };
 

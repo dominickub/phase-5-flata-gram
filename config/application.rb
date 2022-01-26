@@ -44,5 +44,9 @@ module ReactRailsApiProjectTemplate
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
+    config.force_ssl=false
+    config.action_cable.url = 'ws://localhost:3000/cable'
+    # config.action_cable.url = "ws://localhost:3000/cable"
+    # config.action_cable.allowed_request_origins = [/http:\/\/*/, /https:\/\/*/]
   end
 end
