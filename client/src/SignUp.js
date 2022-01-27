@@ -14,6 +14,7 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import {useState} from 'react'
 import {browserHistory} from 'react'
+import {useNavigate} from 'react-router-dom'
 // import {Redirect} from 'react-router-dom'
 // import { makeStyles } from "@material-ui/core/styles";
 
@@ -34,7 +35,7 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignUp({ setCurrentUser}) {
-
+  const navigate = useNavigate();
     // const classes = useStyles();
     const [formData, setFormData] = useState({
         username: "",
@@ -58,7 +59,7 @@ export default function SignUp({ setCurrentUser}) {
             setFormData(formData);
             // browserHistory.push("home");
           })
-          window.location.href='/SignIn'
+          navigate('/SignIn')
 
       } else {
         alert("Password has to be the same");

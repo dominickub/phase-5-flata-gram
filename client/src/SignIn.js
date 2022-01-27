@@ -49,11 +49,11 @@ export default function SignIn({ setCurrentUser}) {
         if (x.username ){
 
           setCurrentUser(x)
-           window.location.href="/home"
+          navigate("/home")
           }
         }
       );
-      // navigate("/home")
+      
      
 
   };

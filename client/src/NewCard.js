@@ -22,8 +22,7 @@ import IconButton from '@mui/material/IconButton';
 import EditIcon from '@mui/icons-material/Edit';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit } from '@fortawesome/free-solid-svg-icons'
-
-
+import {useNavigate} from 'react-router-dom'
 function NewCard({post,likes,id,handleDeletePost,currentUser,users,handleUpdatePost}) {
     const [edit, setEdit] = useState(false)
     
@@ -57,7 +56,7 @@ function NewCard({post,likes,id,handleDeletePost,currentUser,users,handleUpdateP
         fetch(`/posts/${id}`,{
             method: 'PATCH',
             body: formData
-        },window.location.reload()
+        },
         )}
         
         const handleUpdateCaption = (e) => {

@@ -3,7 +3,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFileUpload } from '@fortawesome/free-solid-svg-icons'
 import { faArrowCircleRight } from '@fortawesome/free-solid-svg-icons'
 import Link from '@mui/material/Link';
+import {useNavigate} from 'react-router-dom'
 function PostUpload() {
+    const navigate = useNavigate();
     const [selectedImage, setSelectedImage] = useState(null)
     const [caption, setCaption] = useState({
         caption: ""
@@ -26,7 +28,7 @@ function PostUpload() {
             method: 'POST',
             body: formData
         })
-        window.location.href="home";
+        navigate("home");
 
     }
     const handleChange = (e) => {
