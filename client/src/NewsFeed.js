@@ -73,12 +73,10 @@ export default function NewsFeed({handleUpdatePost, posts,currentUser, pictures,
               color="text.primary"
               gutterBottom
             >
-              Album layout
+              News Feed
             </Typography>
             <Typography variant="h5" align="center" color="text.secondary" paragraph>
-              Something short and leading about the collection below—its contents,
-              the creator, etc. Make it short and sweet, but not too short so folks
-              don&apos;t simply skip over it entirely.
+
             </Typography>
             <Stack
               sx={{ pt: 4 }}
@@ -86,8 +84,8 @@ export default function NewsFeed({handleUpdatePost, posts,currentUser, pictures,
               spacing={2}
               justifyContent="center"
             >
-              <Button variant="contained">Main call to action</Button>
-              <Button variant="outlined">Secondary action</Button>
+              {/* <Button variant="contained">Main call to action</Button>
+              <Button variant="outlined">Secondary action</Button> */}
             </Stack>
           </Container>
         </Box>
@@ -95,7 +93,7 @@ export default function NewsFeed({handleUpdatePost, posts,currentUser, pictures,
           {/* End hero unit */}
           <Grid id="grid" container spacing={1}>
             {posts.map((post) => (
-              <NewCard handleUpdatePost={handleUpdatePost} currentUser={currentUser} id={post.id} handleDeletePost={handleDeletePost} key={post.id} post={post} likes={post.total_likes}/>
+              <NewCard  handleUpdatePost={handleUpdatePost} currentUser={currentUser} id={post.id} handleDeletePost={handleDeletePost} key={post.id} post={post} likes={post.total_likes}/>
               // <Grid item key={post} xs={12} sm={6} md={4}>
               //   <Card
               //     sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}

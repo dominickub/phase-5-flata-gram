@@ -138,9 +138,9 @@ function NewCard({post,likes,id,handleDeletePost,currentUser,users,handleUpdateP
                 <Typography gutterBottom variant="h5" component="h2" id="caption">
                     {post.caption}
                 </Typography>
-                <Typography id="comments">
+                {/* <Typography id="comments">
                     {post.caption}
-                </Typography>
+                </Typography> */}
             </CardContent>
         </Card>
     )

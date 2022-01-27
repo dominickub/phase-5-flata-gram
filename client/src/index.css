@@ -68,7 +68,8 @@ input[type="file"] {
   color: black;
 }
 #grid{
-  justify-content:space-evenly
+  justify-content:space-evenly;
+  margin-top:-100px;
 }
 
 #card {
@@ -78,6 +79,7 @@ input[type="file"] {
   max-width: 500px ;
   min-width: 500px;
   min-height: 500px;
+  
 }
 #caption{
   margin-right: 1000%;
@@ -85,16 +87,71 @@ input[type="file"] {
 #comments{
   margin-right: 1000%;
 }
-#username{
+/* #username{
   margin-right: 85%;
 
-}
+} */
 
 #image-list{
-  overflow: hidden;
+  /* overflow: hidden; */
   margin-left: 155px;
 }
 
 #chatroom{
 color: black
 }
+
+/* .me{
+  background-color: black;
+}
+.them{
+  background-color: red;
+} */
+.chat{
+  width: 80%;
+  border: solid 1px #EEE;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  padding-right: -100px;
+}
+
+p {
+  max-width: 255px;
+  word-wrap: break-word;
+  margin-bottom: 12px;
+  line-height: 24px;
+  position: relative;
+	padding: 10px 20px;
+  border-radius: 25px;
+  
+}
+
+.me {
+	color: white; 
+	background: #0B93F6;
+	align-self: flex-end;
+  background: linear-gradient(to bottom, #00D0EA 0%, #0085D1 100%);
+  background-attachment: fixed;
+  position: relative;
+  
+}
+
+.them {
+	background: #E5E5EA;
+	color: black;
+  align-self: flex-start;	
+  background: linear-gradient(to bottom, #E5E5EA 0%, #E5E5EA 100%);
+  background-attachment: fixed;
+  position: relative;
+  margin-left: 210px;
+  
+	}
+
+  #input-box {
+  margin-left: 460px;
+  /* position:center */
+    
+  }
+
+ 

@@ -35,17 +35,22 @@ const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 const theme = createTheme();
 
-export default function Profile({posts}) {
+export default function Profile({posts,currentUser}) {
+
+const filteredPosts = posts.filter((post)=>post.user_id == currentUser.id)
+console.log(filteredPosts)
+
+  
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <AppBar position="relative">
-        <Toolbar>
+        {/* <Toolbar>
           <CameraIcon sx={{ mr: 2 }} />
           <Typography variant="h6" color="inherit" noWrap>
             Profile
           </Typography>
-        </Toolbar>
+        </Toolbar> */}
       </AppBar>
       <main>
         {/* Hero unit */}
@@ -64,12 +69,10 @@ export default function Profile({posts}) {
               color="text.primary"
               gutterBottom
             >
-              Album layout
+              Profile
             </Typography>
             <Typography variant="h5" align="center" color="text.secondary" paragraph>
-              Something short and leading about the collection below—its contents,
-              the creator, etc. Make it short and sweet, but not too short so folks
-              don&apos;t simply skip over it entirely.
+              Write something inspirational here!
             </Typography>
             <Stack
               sx={{ pt: 4 }}
@@ -77,24 +80,28 @@ export default function Profile({posts}) {
               spacing={2}
               justifyContent="center"
             >
-              <Button variant="contained">Main call to action</Button>
-              <Button variant="outlined">Secondary action</Button>
+              {/* <Button variant="contained">Main call to action</Button>
+              <Button variant="outlined">Secondary action</Button> */}
             </Stack>
           </Container>
         </Box>
         <Container sx={{ py: 8 }} maxWidth="md" >
           {/* End hero unit */}
           <ImageList sx={{ width: 500, height: 450 }} cols={3} rowHeight={164} id ="image-list" >
-      {posts.map((post) => (
+            
+      {filteredPosts.map((post) => {
+         return(
         <ImageListItem >
           <img
+            
             src={`${post.image_url}?w=164&h=164&fit=crop&auto=format`}
             srcSet={`${post.image_url}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
             alt={post.id}
             loading="lazy"
           />
-        </ImageListItem>
-      ))}
+        </ImageListItem>)
+
+      })}
     </ImageList >
         </Container>
       </main>

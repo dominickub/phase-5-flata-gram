@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { createConsumer } from "@rails/actioncable"
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
 const consumer = createConsumer()
 
 function ChatRoom({currentUser}) {
@@ -40,20 +42,29 @@ function ChatRoom({currentUser}) {
     setMessageInput('')
   }
 
- 
   return (
-    <div>
-
+    <div className="chat">
+          
       <h3 id="chatroom"> Chat Room:</h3>
-
-      {messages.map((message, i) => <p key={i}>{message.content} - {message.created_at}</p>)}
-
+    
+      {messages.map((message, i) =>{
+        return(
+         
+          <p key={i} className={(message.user_id == currentUser.id)?"me" : "them"}>{message.content} </p>)}
+        )
+      } 
+    <Box id="input-box"
+      sx={{
+        width: 500,
+        maxWidth: '100%',
+      }}
+    >
       <form onSubmit={handleSubmit}>
 
-        <input type="text" value={messageInput} onChange={handleMessageInputChange} />
-
+        {/* <input type="text" value={messageInput} onChange={handleMessageInputChange} /> */}
+        <TextField id="text-field" fullWidth label="fullWidth" id="fullWidth" type="text" value={messageInput} onChange={handleMessageInputChange} />
       </form>
-
+      </Box>
     </div>
   )
 }

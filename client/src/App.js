@@ -102,7 +102,7 @@ function App() {
             <Route path="/home" element={<NewsFeed handleUpdatePost={handleUpdatePost} currentUser={currentUser} handleDeletePost={handleDeletePost} likes ={likes} setLikes={setLikes} pictures={pictures} posts={posts} mappedPosts={mappedPosts}/>}/>
             <Route path='/upload' element={<PostUpload />}/>
             <Route path='search' element={<Search/>}/>
-            <Route path='/profile' element={<Profile posts={posts} />}/>
+            <Route path='/profile' element={<Profile currentUser={currentUser}posts={posts} />}/>
             <Route path='/chatroom' element={<ChatRoom currentUser={currentUser} />}/>
             {/* <Route path='/messages' element={<MessagesLayout />}/> */}
           {/* <SignUp />
