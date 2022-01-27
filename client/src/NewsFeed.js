@@ -13,7 +13,6 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import {Link} from 'react-router-dom';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import {useState} from 'react'
@@ -22,9 +21,7 @@ function Copyright() {
   return (
     <Typography variant="body2" color="text.secondary" align="center">
       {'Copyright © '}
-      <Link color="inherit" to="https://mui.com/">
-        Your Website
-      </Link>{' '}
+      
       {new Date().getFullYear()}
       {'.'}
     </Typography>
