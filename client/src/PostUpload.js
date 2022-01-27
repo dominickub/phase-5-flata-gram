@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFileUpload } from '@fortawesome/free-solid-svg-icons'
 import { faArrowCircleRight } from '@fortawesome/free-solid-svg-icons'
-import Link from '@mui/material/Link';
+import Link from 'react-router-dom';
 import {useNavigate} from 'react-router-dom'
 function PostUpload() {
     const navigate = useNavigate();
